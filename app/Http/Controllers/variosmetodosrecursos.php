@@ -15,8 +15,9 @@ class variosmetodosrecursos extends Controller
      */
     public function index()
     {
-        $info = info::all();
-        dd($info);
+        $info = info::where('descripcion','=','Tecnico')->get();
+        //dd($info);
+        return view('varios',compact('info'));
     }
 
     /**
@@ -27,14 +28,11 @@ class variosmetodosrecursos extends Controller
     public function create()
     {
         $info = new info;
-        $info->nombre = 'Aaron Agullo';
-        $info->descripcion = 'Gerente TI';
+        $info->nombre = 'Cristina';
+        $info->descripcion = '';
         $info->save();
 
-        info::create([
-            'nombre' => 'Aaron',
-            'descripcion' => 'Auditor'
-        ]);
+    
         return 'Datos guardados ccorrectamente';
     }
 
