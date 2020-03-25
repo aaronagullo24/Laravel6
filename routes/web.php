@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+/*Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -90,3 +90,5 @@ Route::resource('varios3', 'variosmetodosrecursos')->only(
 )->names([
     'index'=>'varios.inicio'
 ]);
+*/
+Route::resource('varios', 'variosmetodosrecursos');

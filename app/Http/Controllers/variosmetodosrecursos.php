@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\info;
+
 class variosmetodosrecursos extends Controller
 {
     /**
@@ -13,10 +15,8 @@ class variosmetodosrecursos extends Controller
      */
     public function index()
     {
-        // return 'este es el index';
-        //return redirect()->action('holaController');
-        //return redirect()->action('UsuarioController@usuariounparametro', ['nombre'=>'Aaron Agullo']);
-        return redirect('hola');
+        $info = info::all();
+        dd($info);
     }
 
     /**
@@ -26,7 +26,16 @@ class variosmetodosrecursos extends Controller
      */
     public function create()
     {
-        //
+        $info = new info;
+        $info->nombre = 'Aaron Agullo';
+        $info->descripcion = 'Gerente TI';
+        $info->save();
+
+        info::create([
+            'nombre' => 'Aaron',
+            'descripcion' => 'Auditor'
+        ]);
+        return 'Datos guardados ccorrectamente';
     }
 
     /**
@@ -48,7 +57,9 @@ class variosmetodosrecursos extends Controller
      */
     public function show($id)
     {
-        //
+        $info = info::find($id);
+        $info->delete();
+        return 'El registro '.$id.' ha sido eliminado';
     }
 
     /**
@@ -59,7 +70,13 @@ class variosmetodosrecursos extends Controller
      */
     public function edit($id)
     {
-        //
+       // $info = info::findOrFail($id);
+        $info = info::find($id);
+        $info->nombre = 'Agullo';
+        $info->descripcion ='Tecnico';
+        $info->save();
+        return 'Datos Actualizados';
+       
     }
 
     /**
@@ -82,6 +99,6 @@ class variosmetodosrecursos extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
