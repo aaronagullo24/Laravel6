@@ -15,9 +15,10 @@ class variosmetodosrecursos extends Controller
      */
     public function index()
     {
-        $info = info::where('descripcion','=','Tecnico')->get();
+        // $info = info::where('descripcion','=','Tecnico')->get();
         //dd($info);
-        return view('varios',compact('info'));
+        //return view('varios',compact('info'));
+        return view('varios.index');
     }
 
     /**
@@ -27,13 +28,13 @@ class variosmetodosrecursos extends Controller
      */
     public function create()
     {
-        $info = new info;
-        $info->nombre = 'Cristina';
-        $info->descripcion = '';
-        $info->save();
+       // $info = new info;
+        //$info->nombre = 'Cristina';
+        //$info->descripcion = '';
+        //$info->save();
 
-    
-        return 'Datos guardados ccorrectamente';
+        //return 'Datos guardados ccorrectamente';
+        return view('varios.create');
     }
 
     /**
@@ -55,9 +56,11 @@ class variosmetodosrecursos extends Controller
      */
     public function show($id)
     {
-        $info = info::find($id);
-        $info->delete();
-        return 'El registro '.$id.' ha sido eliminado';
+        //$info = info::find($id);
+        //$info->delete();
+        //return 'El registro ' . $id . ' ha sido eliminado';
+
+        return view('varios.show',compact('id'));
     }
 
     /**
@@ -68,13 +71,14 @@ class variosmetodosrecursos extends Controller
      */
     public function edit($id)
     {
-       // $info = info::findOrFail($id);
-        $info = info::find($id);
-        $info->nombre = 'Agullo';
-        $info->descripcion ='Tecnico';
-        $info->save();
-        return 'Datos Actualizados';
-       
+        // $info = info::findOrFail($id);
+       // $info = info::find($id);
+        //$info->nombre = 'Agullo';
+        //$info->descripcion = 'Tecnico';
+        //$info->save();
+        //return 'Datos Actualizados';
+
+        return view('varios.edit',compact('id'));
     }
 
     /**
@@ -97,6 +101,5 @@ class variosmetodosrecursos extends Controller
      */
     public function destroy($id)
     {
-        
     }
 }
